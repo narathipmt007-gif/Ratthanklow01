@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120b08" />
+  <title>สำนักสักยันต์รัตนเกล้า</title>
+  <meta name="description" content="สำนักสักยันต์รัตนเกล้า บริการสักยันต์ บูชาครู พิธีมงคล และให้คำปรึกษาเรื่องพิธีกรรมตามความเชื่อ" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0d0806;
+      --bg2:#17100b;
+      --card:#1d140f;
+      --gold:#d8aa54;
+      --gold2:#f3d48d;
+      --text:#f7f0e5;
+      --muted:#cdbfae;
+      --line:rgba(216,170,84,.25);
+      --shadow:0 18px 45px rgba(0,0,0,.32);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans Thai",sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(130,78,28,.18), transparent 34rem),
+        linear-gradient(180deg,#100a07 0%,#090605 100%);
+      color:var(--text);
+      line-height:1.75;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(1120px, calc(100% - 36px));
+      margin:auto;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(9,6,5,.82);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav-inner{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:"Noto Serif Thai",serif;
+      font-weight:700;
+      letter-spacing:.3px;
+    }
+
+    .brand-mark{
+      width:42px;height:42px;
+      border:1px solid var(--gold);
+      border-radius:50%;
+      display:grid;place-items:center;
+      color:var(--gold2);
+      box-shadow:0 0 24px rgba(216,170,84,.16);
+      font-size:20px;
+    }
+
+    .menu{
+      display:flex;
+      flex-wrap:wrap;
+      gap:22px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .menu a:hover{color:var(--gold2)}
+
+    .hero{
+      min-height:82vh;
+      display:grid;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(236,190,90,.2), transparent 18rem),
+        radial-gradient(circle at 30% 80%, rgba(116,54,24,.22), transparent 22rem);
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:52px;
+      align-items:center;
+      padding:76px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:9px;
+      align-items:center;
+      padding:7px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--gold2);
+      font-size:13px;
+      background:rgba(255,255,255,.02);
+    }
+
+    h1,h2,h3{
+      font-family:"Noto Serif Thai",serif;
+      line-height:1.25;
+      margin:0;
+    }
+
+    h1{
+      font-size:clamp(42px,7vw,84px);
+      margin-top:24px;
+      max-width:800px;
+      text-shadow:0 5px 26px rgba(0,0,0,.35);
+    }
+
+    .gold{color:var(--gold2)}
+
+    .hero p{
+      max-width:720px;
+      font-size:18px;
+      color:var(--muted);
+      margin:24px 0 30px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:48px;
+      padding:0 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      color:#1a1108;
+      background:linear-gradient(135deg,#f5d88d,#bd8733);
+      box-shadow:0 12px 32px rgba(205,153,66,.18);
+      font-weight:700;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-ghost{color:var(--gold2); background:rgba(255,255,255,.02)}
+
+    .seal{
+      width:min(420px,100%);
+      aspect-ratio:1;
+      border-radius:50%;
+      margin:auto;
+      position:relative;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(244,210,137,.34);
+      background:
+        radial-gradient(circle, rgba(216,170,84,.18) 0 23%, transparent 24%),
+        repeating-radial-gradient(circle, rgba(216,170,84,.12) 0 1px, transparent 1px 29px),
+        rgba(255,255,255,.015);
+      box-shadow:
+        inset 0 0 70px rgba(216,170,84,.08),
+        0 0 80px rgba(148,82,27,.14);
+    }
+
+    .seal:before,.seal:after{
+      content:"";
+      position:absolute;
+      inset:9%;
+      border:1px solid rgba(244,210,137,.25);
+      border-radius:50%;
+    }
+
+    .seal:after{
+      inset:19%;
+      border-style:dashed;
+    }
+
+    .seal-text{
+      width:60%;
+      text-align:center;
+      font-family:"Noto Serif Thai",serif;
+      color:var(--gold2);
+      font-size:clamp(25px,4vw,42px);
+      line-height:1.3;
+    }
+
+    section{padding:90px 0}
+    .section-head{
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 44px;
+    }
+    .section-head span{
+      color:var(--gold2);
+      font-size:13px;
+      letter-spacing:.08em;
+    }
+    .section-head h2{
+      margin-top:8px;
+      font-size:clamp(30px,4vw,46px);
+    }
+    .section-head p{color:var(--muted);margin-top:14px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01)),
+        var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .icon{
+      width:48px;height:48px;
+      border-radius:14px;
+      display:grid;place-items:center;
+      border:1px solid var(--line);
+      color:var(--gold2);
+      margin-bottom:18px;
+      font-size:22px;
+    }
+
+    .card h3{font-size:22px}
+    .card p{color:var(--muted);font-size:15px;margin-bottom:0}
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:36px;
+      align-items:stretch;
+    }
+
+    .about-panel{
+      min-height:380px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 25%,rgba(235,197,116,.15),transparent 17rem),
+        linear-gradient(145deg,#24160e,#100a07);
+      padding:38px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:var(--shadow);
+    }
+
+    .quote{
+      color:var(--gold2);
+      font-family:"Noto Serif Thai",serif;
+      font-size:clamp(25px,3.5vw,40px);
+      line-height:1.55;
+    }
+
+    .about-copy{
+      padding:20px 0;
+    }
+    .about-copy h2{font-size:42px}
+    .about-copy p{color:var(--muted)}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      counter-reset:step;
+    }
+
+    .step{
+      padding:24px;
+      border-top:1px solid var(--gold);
+      background:rgba(255,255,255,.018);
+      min-height:170px;
+    }
+
+    .step:before{
+      counter-increment:step;
+      content:"0" counter(step);
+      display:block;
+      color:var(--gold2);
+      margin-bottom:12px;
+      font-weight:700;
+    }
+    .step strong{font-size:18px}
+    .step p{color:var(--muted);font-size:14px}
+
+    .cta{
+      text-align:center;
+      padding:54px 28px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(216,170,84,.14),transparent 22rem),
+        #15100c;
+    }
+
+    .cta h2{font-size:clamp(30px,4vw,48px)}
+    .cta p{color:var(--muted);max-width:650px;margin:15px auto 25px}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+      margin-top:24px;
+    }
+
+    .contact-item{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.018);
+    }
+    .contact-item small{display:block;color:var(--muted)}
+    .contact-item strong{color:var(--gold2)}
+
+    footer{
+      padding:28px 0 40px;
+      border-top:1px solid var(--line);
+      color:#aa9a89;
+      text-align:center;
+      font-size:13px;
+    }
+
+    .floating{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:40;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .floating a{
+      width:52px;height:52px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:#19100b;
+      border:1px solid var(--gold);
+      box-shadow:var(--shadow);
+      color:var(--gold2);
+      font-weight:700;
+    }
+
+    @media(max-width:850px){
+      .menu{display:none}
+      .hero-grid,.about{grid-template-columns:1fr}
+      .hero{min-height:auto}
+      .seal{width:min(320px,86vw)}
+      .grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+      section{padding:68px 0}
+    }
+
+    @media(max-width:520px){
+      .container{width:min(100% - 24px,1120px)}
+      .steps{grid-template-columns:1fr}
+      h1{font-size:44px}
+      .hero-grid{padding:52px 0}
+      .brand{font-size:14px}
+      .brand-mark{width:38px;height:38px}
+      .card,.about-panel{padding:22px}
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark">ร</span>
+        <span>สำนักสักยันต์รัตนเกล้า</span>
+      </a>
+      <div class="menu">
+        <a href="#about">เกี่ยวกับสำนัก</a>
+        <a href="#services">บริการ</a>
+        <a href="#booking">จองคิว</a>
+        <a href="#contact">ติดต่อ</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">✦ ศรัทธา • ครูบาอาจารย์ • ศิลป์แห่งยันต์</span>
+        <h1>สำนักสักยันต์<br><span class="gold">รัตนเกล้า</span></h1>
+        <p>
+          งานสักยันต์และพิธีกรรมตามความเชื่อ เน้นความเคารพครูบาอาจารย์
+          ความเหมาะสม และการให้คำแนะนำแก่ผู้มารับบริการอย่างเป็นกันเอง
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#booking">จองคิว / สอบถาม</a>
+          <a class="btn btn-ghost" href="#services">ดูบริการ</a>
+        </div>
+      </div>
+
+      <div class="seal" aria-hidden="true">
+        <div class="seal-text">
+          สำนักสักยันต์<br>รัตนเกล้า
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container about">
+        <div class="about-panel">
+          <div class="quote">“หากไม่สิ้นศรัทธา<br>ครูก็พร้อมช่วยเต็มที่”</div>
+        </div>
+
+        <div class="about-copy">
+          <span style="color:var(--gold2)">เรื่องราวของสำนัก</span>
+          <h2>สืบสานความเชื่อ<br>ด้วยความเคารพและศรัทธา</h2>
+          <p>
+            สำนักสักยันต์รัตนเกล้าให้บริการด้านสักยันต์และพิธีกรรมตามความเชื่อ
+            โดยให้ความสำคัญกับครูบาอาจารย์ ขนบธรรมเนียม ความเหมาะสมของแต่ละบุคคล
+            และการอธิบายขั้นตอนก่อนเริ่มพิธีอย่างชัดเจน
+          </p>
+          <p>
+            ผู้สนใจสามารถสอบถามลายยันต์ นัดหมายวันเวลา หรือปรึกษาเบื้องต้นก่อนเดินทางมาได้
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span>บริการของสำนัก</span>
+          <h2>เลือกบริการที่เหมาะกับคุณ</h2>
+          <p>สอบถามรายละเอียด ค่าใช้จ่าย และวันเวลาที่สะดวกก่อนเข้ารับบริการได้โดยตรง</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">✦</div>
+            <h3>สักยันต์</h3>
+            <p>
+              ให้คำแนะนำลายยันต์ตามความเหมาะสม เช่น สาริกา หัวใจเศรษฐี
+              พระสีวลี ถุงเงินถุงทอง และลายยันต์อื่น ๆ
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">☼</div>
+            <h3>พิธีบูชาครู</h3>
+            <p>
+              พิธีไหว้ครู บูชาครู เจิมหน้าผาก ครอบเศียร และพิธีตามสายครู
+              โดยจัดเตรียมตามธรรมเนียมของสำนัก
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">♢</div>
+            <h3>พิธีมงคลและให้คำปรึกษา</h3>
+            <p>
+              งานบวงสรวง ตั้งศาล ถอนศาล ยกเสาเอก และให้คำปรึกษาเรื่องพิธีกรรม
+              ตามความเชื่อและความเหมาะสมของสถานที่
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking">
+      <div class="container">
+        <div class="section-head">
+          <span>ขั้นตอนนัดหมาย</span>
+          <h2>จองคิวง่ายใน 4 ขั้นตอน</h2>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <strong>เลือกบริการ</strong>
+            <p>แจ้งบริการหรือลายยันต์ที่สนใจ</p>
+          </div>
+          <div class="step">
+            <strong>เลือกวันเวลา</strong>
+            <p>สอบถามคิวว่างและเลือกช่วงเวลาที่สะดวก</p>
+          </div>
+          <div class="step">
+            <strong>ยืนยันนัดหมาย</strong>
+            <p>แจ้งชื่อและเบอร์ติดต่อเพื่อยืนยันคิว</p>
+          </div>
+          <div class="step">
+            <strong>เดินทางมาที่สำนัก</strong>
+            <p>มาตามเวลานัดและเตรียมตัวตามคำแนะนำ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <span style="color:var(--gold2)">ติดต่อสำนัก</span>
+          <h2>สอบถามรายละเอียดและจองคิว</h2>
+          <p>
+            ติดต่อสอบถามก่อนเดินทาง เพื่อเช็กคิว นัดหมาย และรับคำแนะนำเกี่ยวกับบริการ
+          </p>
+
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary" href="tel:0864013114">โทร 086-401-3114</a>
+            <a class="btn btn-ghost" href="https://line.me/ti/p/~Armcpe" target="_blank" rel="noopener">LINE: Armcpe</a>
+            <a class="btn btn-ghost" href="https://www.facebook.com/narathip.maithong" target="_blank" rel="noopener">Facebook</a>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-item">
+              <small>โทรศัพท์</small>
+              <strong>086-401-3114</strong>
+            </div>
+            <div class="contact-item">
+              <small>LINE ID</small>
+              <strong>Armcpe</strong>
+            </div>
+            <div class="contact-item">
+              <small>Facebook</small>
+              <strong>narathip maithong</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating">
+    <a href="tel:0864013114" title="โทร">☎</a>
+    <a href="https://line.me/ti/p/~Armcpe" target="_blank" rel="noopener" title="LINE">L</a>
+  </div>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> สำนักสักยันต์รัตนเกล้า — สงวนลิขสิทธิ์
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
